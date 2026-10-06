@@ -1,0 +1,39 @@
+gg:
+  jte:
+    development-mode: true
+
+spring:
+  application:
+    name: petclinic-web-client
+
+  security:
+    oauth2:
+
+      client:
+        registration:
+          login-client:
+            client-id: "client"
+            client-secret: "secret"
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8080/login/oauth2/code/login-client"
+            scope: openid
+
+        provider:
+          login-client:
+            issuer-uri: "http://localhost:9000"
+
+resource-server:
+  base-url: http://localhost:8090
+
+logging:
+  level:
+    org.flywaydb: debug
+    org.springframework.security: trace
+    org.springframework.jdbc.core: trace
+
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        name: CLIENT-SESSION

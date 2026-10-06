@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: petclinic-resource-server
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/resource
+    username: jack
+    password: 123
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+          jwk-set-uri: http://host.docker.internal:9000/oauth2/jwks
+
+server:
+  port: 8090
+  error:
+    include-message: always
+    include-stacktrace: always
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.jdbc.core: DEBUG
+    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
+    dev.dmitriirussu.petclinic.resource: DEBUG
